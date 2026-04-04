@@ -156,83 +156,238 @@
                     <img src="../image/Sylas.jpg" 
                          class="card-img-top" alt="Sylas">
                     <div class="card-body">
-                        <h5 class="card-title">Sylas (정글/미드)</h5>
-                        <p class="card-text">궁극기를 훔치세요!</p>
+                        <h5 class="card-title">Sylas (미드,탑,정글)</h5>
+                        <p class="card-text">역할: 마법사 / 난이도: 상</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <!-- 이 버튼을 누르면 아래 모달이 열림 -->
+                        <button class="btn btn-outline-light w-100"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalSylas">
+                            상세 보기
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <!-- 챔피언 카드 3: Anivia -->
+            <!-- 모달 (iframe으로 Sylas.html 불러오기) -->
+             <div class="modal fade" id="modalSylas" tabindex="-1" aria-labelledby="modalSylasLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content bg-dark text-white border-secondary">
+            <!-- 헤더 -->
+             <div class="modal-header border-secondary">
+                <h5 class="modal-title" id="modalSylasLabel">사일러스 (Sylas) 상세 정보</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- 바디: iframe으로 내용 채움 -->
+             <div class="modal-body p-0" style="height: 65vh; background: #0a0e17;">
+                <iframe
+                src="../modals/Sylas.html"
+                frameborder="0"
+                style="width: 100%; height: 100%; border: none;"
+                allowfullscreen>
+            </iframe>
+        </div>
+            <!-- 푸터 -->
+             <div class="modal-footer border-secondary">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- 챔피언 카드 3: Anivia 
             <div class="col">
                 <div class="card h-100">
-                    <img src="#" 
+                    <img src="../image/Anivia.jpg" 
                          class="card-img-top" alt="Anivia">
                     <div class="card-body">
                         <h5 class="card-title">Anivia (미드)</h5>
                         <p class="card-text">얼음 마법사</p>
                     </div>
                 </div>
+            </div> -->
+           
+            <!-- 챔피언 카드 3: Anivia (상세보기 버튼 포함) -->
+ <div class="col">
+                <div class="card h-100">
+                    <img src="../image/Anivia.jpg" 
+                         class="card-img-top" alt="Anivia">
+                    <div class="card-body">
+                        <h5 class="card-title">Anivia (미드)</h5>
+                        <p class="card-text">역할: 마법사 / 난이도: 상</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <!-- 이 버튼을 누르면 아래 모달이 열림 -->
+                        <button class="btn btn-outline-light w-100"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalAnivia">
+                            상세 보기
+                        </button>
+                    </div>
+                </div>
             </div>
+
+            <!-- 모달 (iframe으로 Anivia.html 불러오기) -->
+             <div class="modal fade" id="modalAnivia" tabindex="-1" aria-labelledby="modalAniviaLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content bg-dark text-white border-secondary">
+            <!-- 헤더 -->
+             <div class="modal-header border-secondary">
+                <h5 class="modal-title" id="modalAniviaLabel">애니비아 (Anivia) 상세 정보</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- 바디: iframe으로 내용 채움 -->
+             <div class="modal-body p-0" style="height: 65vh; background: #0a0e17;">
+                <iframe
+                src="../modals/Anivia.html"
+                frameborder="0"
+                style="width: 100%; height: 100%; border: none;"
+                allowfullscreen>
+            </iframe>
+        </div>
+            <!-- 푸터 -->
+             <div class="modal-footer border-secondary">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
 
             <!-- 챔피언 카드 4: Briar -->
             <div class="col">
                 <div class="card h-100">
-                    <img src="#" 
+                    <img src="../image/Briar.jpg" 
                          class="card-img-top" alt="Briar">
                     <div class="card-body">
-                        <h5 class="card-title">Briar (정글)</h5>
-                        <p class="card-text">피에 굶주린 전사</p>
+                        <h5 class="card-title">Briar (미드,탑,정글)</h5>
+                        <p class="card-text">역할: 마법사 / 난이도: 상</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <!-- 이 버튼을 누르면 아래 모달이 열림 -->
+                        <button class="btn btn-outline-light w-100"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalBriar">
+                            상세 보기
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <!-- 챔피언 카드 5: Jax -->
+            <!-- 모달 (iframe으로 Sylas.html 불러오기) -->
+             <div class="modal fade" id="modalBriar" tabindex="-1" aria-labelledby="modalBriarLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content bg-dark text-white border-secondary">
+            <!-- 헤더 -->
+             <div class="modal-header border-secondary">
+                <h5 class="modal-title" id="modalBriarLabel">Briar (Briar) 상세 정보</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- 바디: iframe으로 내용 채움 -->
+             <div class="modal-body p-0" style="height: 65vh; background: #0a0e17;">
+                <iframe
+                src="../modals/Briar.html"
+                frameborder="0"
+                style="width: 100%; height: 100%; border: none;"
+                allowfullscreen>
+            </iframe>
+        </div>
+            <!-- 푸터 -->
+             <div class="modal-footer border-secondary">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+             <!-- 챔피언 카드 5: Jax -->
             <div class="col">
                 <div class="card h-100">
-                    <img src="#" 
+                    <img src="../image/Jax.jpg" 
                          class="card-img-top" alt="Jax">
                     <div class="card-body">
-                        <h5 class="card-title">Jax (탑)</h5>
-                        <p class="card-text">무기의 달인</p>
+                        <h5 class="card-title">Jax (탑,정글)</h5>
+                        <p class="card-text">역할: 전사 / 난이도: 상</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <!-- 이 버튼을 누르면 아래 모달이 열림 -->
+                        <button class="btn btn-outline-light w-100"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalJax">
+                            상세 보기
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <!-- 챔피언 카드 6: Jinx -->
+            <!-- 모달 (iframe으로 Jax.html 불러오기) -->
+             <div class="modal fade" id="modalJax" tabindex="-1" aria-labelledby="modalJaxLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content bg-dark text-white border-secondary">
+            <!-- 헤더 -->
+             <div class="modal-header border-secondary">
+                <h5 class="modal-title" id="modalJaxLabel">잭스 (Jax) 상세 정보</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- 바디: iframe으로 내용 채움 -->
+             <div class="modal-body p-0" style="height: 65vh; background: #0a0e17;">
+                <iframe
+                src="../modals/Jax.html"
+                frameborder="0"
+                style="width: 100%; height: 100%; border: none;"
+                allowfullscreen>
+            </iframe>
+        </div>
+            <!-- 푸터 -->
+             <div class="modal-footer border-secondary">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+             <!-- 챔피언 카드 6: Jinx -->
             <div class="col">
                 <div class="card h-100">
-                    <img src="#" 
+                    <img src="../image/Jinx.jpg" 
                          class="card-img-top" alt="Jinx">
                     <div class="card-body">
                         <h5 class="card-title">Jinx (원딜)</h5>
-                        <p class="card-text">난폭한 총잡이</p>
+                        <p class="card-text">역할: 원거리 딜러 / 난이도: 상</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <!-- 이 버튼을 누르면 아래 모달이 열림 -->
+                        <button class="btn btn-outline-light w-100"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalJinx">
+                            상세 보기
+                        </button>
                     </div>
                 </div>
             </div>
 
+            <!-- 모달 (iframe으로 Jinx.html 불러오기) -->
+             <div class="modal fade" id="modalJinx" tabindex="-1" aria-labelledby="modalJinxLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content bg-dark text-white border-secondary">
+            <!-- 헤더 -->
+             <div class="modal-header border-secondary">
+                <h5 class="modal-title" id="modalJinxLabel">징크스 (Jinx) 상세 정보</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- 바디: iframe으로 내용 채움 -->
+             <div class="modal-body p-0" style="height: 65vh; background: #0a0e17;">
+                <iframe
+                src="../modals/Jinx.html"
+                frameborder="0"
+                style="width: 100%; height: 100%; border: none;"
+                allowfullscreen>
+            </iframe>
+        </div>
+            <!-- 푸터 -->
+             <div class="modal-footer border-secondary">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
+            </div>
         </div>
     </div>
-
-    <!-- 최신 뉴스 섹션 -->
-    <div class="container my-5">
-        <h2 class="text-center accent-purple">최신 뉴스</h2>
-        <div class="row g-4 mt-3">
-            <div class="col-md-6">
-                <div class="card p-3">
-                    <h3>새로운 챔피언 출시</h3>
-                    <p>2026 루나 레벨 이벤트!</p>
-                    <a href="#" class="btn btn-primary" style="width:fit-content;">더 보기</a>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card p-3">
-                    <h3>시즌 업데이트</h3>
-                    <p>2026 시즌 변경사항을 확인하세요.</p>
-                    <a href="#" class="btn btn-primary" style="width:fit-content;">더 보기</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</body>
-</html>
+</div>
