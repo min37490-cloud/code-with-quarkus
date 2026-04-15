@@ -8,6 +8,7 @@
 
     <!-- 2단계: 부트스트랩 5 CDN 연결 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/test.js"></script>
     <script>
@@ -16,39 +17,6 @@
         }
     </script>
 
-    <!-- 3단계: LOL 테마 커스텀 CSS -->
-    <style> 
-        body {
-            background-color: #0a0e17;
-            color: #fff;
-        }
-        .accent-purple {
-            color: #a020f0;
-        }
-        .card {
-            background-color: #1e1e1e;
-            border: none;
-            color: white;
-        }
-        /* 4단계: 호버 애니메이션 */
-        .card {
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(160, 32, 240, 0.5);
-        }
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
-        }
-        .btn-primary {
-            background-color: #a020f0;
-            border: none;
-        }
-    </style>
-</head>
-<body>
 
     <!-- 네비게이션 바 -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -114,7 +82,7 @@
         <!--<div class="row row-cols-auto g-4">!-->
 
             <!-- 챔피언 카드 1: Aatrox (상세보기 버튼 포함) -->
- <div class="col">
+            <div class="col">
                 <div class="card h-100">
                     <img src="../image/aatrox.jpg" 
                          class="card-img-top" alt="Aatrox">
@@ -207,18 +175,6 @@
     </div>
 </div>
 
-            <!-- 챔피언 카드 3: Anivia 
-            <div class="col">
-                <div class="card h-100">
-                    <img src="../image/Anivia.jpg" 
-                         class="card-img-top" alt="Anivia">
-                    <div class="card-body">
-                        <h5 class="card-title">Anivia (미드)</h5>
-                        <p class="card-text">얼음 마법사</p>
-                    </div>
-                </div>
-            </div> -->
-           
             <!-- 챔피언 카드 3: Anivia (상세보기 버튼 포함) -->
  <div class="col">
                 <div class="card h-100">
@@ -273,7 +229,7 @@
                          class="card-img-top" alt="Briar">
                     <div class="card-body">
                         <h5 class="card-title">Briar (미드,탑,정글)</h5>
-                        <p class="card-text">역할: 마법사 / 난이도: 상</p>
+                        <p class="card-text">역할: 전사,암살자 / 난이도: 상</p>
                     </div>
                     <div class="card-footer bg-transparent border-0">
                         <!-- 이 버튼을 누르면 아래 모달이 열림 -->
@@ -286,7 +242,7 @@
                 </div>
             </div>
 
-            <!-- 모달 (iframe으로 Sylas.html 불러오기) -->
+            <!-- 모달 (iframe으로 Briar.html 불러오기) -->
              <div class="modal fade" id="modalBriar" tabindex="-1" aria-labelledby="modalBriarLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content bg-dark text-white border-secondary">
@@ -406,3 +362,47 @@
         </div>
     </div>
 </div>
+
+<!-- ===== 검색 결과 섹션 (기본 숨김) ===== --> 
+<section id="searchResults"> 
+    <!-- 키워드 헤더 --> 
+    <div class="search-keyword-header"> 
+        <h1 id="searchKeywordDisplay"></h1>
+    </div>
+    
+    <!-- 본문: 사이드바 + 콘텐츠 -->
+    <div class="search-body">
+        <div class="container-fluid px-0">
+            <div class="row g-0">
+                <!-- 왼쪽 카테고리 사이드바 -->
+                <div class="col-md-3 col-lg-2 search-sidebar bg-white py-4">
+                    <div class="px-3 mb-3" style="font-size:0.8rem; color:#999; text-transform:uppercase; letter-spacing:0.1em;">카테고리</div>
+                        <div class="search-category-item active" onclick="switchCategory('champion', this)">
+                            챔피언 <span class="count" id="champCount">(0)</span>
+                        </div>
+                        <div class="search-category-item" onclick="switchCategory('news', this)">
+                            뉴스 <span class="count" id="newsCount">(0)</span> 
+                        </div> 
+                    </div>
+                    
+                    <!-- 오른쪽 콘텐츠 -->
+                    <div class="col-md-9 col-lg-10 search-content-area">
+                        <!-- 챔피언 결과 -->
+                        <div id="resultChampion">
+                            <h5 class="mb-4" style="color:#333;">챔피언</h5>
+                            <div id="championResultList"></div> 
+                        </div> 
+                            <!-- 뉴스 결과 -->
+                            <div id="resultNews" style="display:none;">
+                                <h5 class="mb-4" style="color:#333;">뉴스</h5>
+                                <div id="newsResultList"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </head>
+<body>
+
+
