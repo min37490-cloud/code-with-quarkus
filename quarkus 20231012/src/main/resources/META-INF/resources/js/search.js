@@ -1,125 +1,5 @@
-<<<<<<< HEAD
-// ── 챔피언 데이터 ──────────────────────────────────────────────
-const CHAMPIONS = [
-    { name: '아트록스', engName: 'Aatrox', role: '전사', lane: '탑', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Aatrox.png', difficulty: '상', modal: 'modalAatrox' },
-    { name: '사일러스', engName: 'Sylas', role: '마법사', lane: '정글/미드', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Sylas.png', difficulty: '중', modal: 'modalSylas' },
-    { name: '애니비아', engName: 'Anivia', role: '마법사', lane: '미드', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Anivia.png', difficulty: '상', modal: 'modalAnivia' },
-    { name: '브라이어', engName: 'Briar', role: '전사', lane: '정글', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Briar.png', difficulty: '중', modal: 'modalBriar' },
-    { name: '잭스', engName: 'Jax', role: '전사', lane: '탑', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Jax.png', difficulty: '하', modal: 'modalJax' },
-    { name: '징크스', engName: 'Jinx', role: '원거리딜러', lane: '원딜', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Jinx.png', difficulty: '중', modal: 'modalJinx' },
-];
-
-// ── 뉴스 데이터 ──────────────────────────────────────────────
-const NEWS = [
-    { title: '새로운 챔피언 출시', desc: '2026 루나 레벨 이벤트! 신규 챔피언과 함께하는 특별한 시즌.', category: '게임 업데이트' },
-    { title: '패치 노트 16.4', desc: '챔피언 밸런스 및 아이템 업데이트 내용을 확인하세요.', category: '패치 노트' },
-];
-
-// ── 메인화면으로 돌아가기 ──────────────────────────────────────
-function showMainScreen() {
-    // 히어로 섹션 다시 보임
-    document.querySelector('.hero').classList.remove('d-none');
-    // 카드와 뉴스 다시 보임
-    document.getElementById('championCards').style.display = 'block';
-    document.getElementById('newsSection').style.display = 'block';
-    // 검색 결과 섹션 숨김
-    document.getElementById('searchResults').style.display = 'none';
-    // 검색창 초기화
-    document.getElementById('searchInput').value = '';
-}
-
-// ── 카테고리 탭 전환 ──────────────────────────────────────────
-function switchCategory(type, el) {
-    document.querySelectorAll('.search-category-item').forEach(item => item.classList.remove('active'));
-    el.classList.add('active');
-    document.getElementById('resultChampion').style.display = (type === 'champion') ? 'block' : 'none';
-    document.getElementById('resultNews').style.display = (type === 'news') ? 'block' : 'none';
-}
-
-// ── 검색 실행 ────────────────────────────────────────────────
-function performSearch(query) {
-    const q = query.trim().toLowerCase();
-
-    // 검색어가 없거나 공백이면 메인화면으로
-    if (!q) {
-        showMainScreen();
-        return;
-    }
-
-    // 검색어 출력
-    document.getElementById('searchKeywordDisplay').textContent = `"${query}"`;
-
-    // 챔피언 필터링
-    const champResults = CHAMPIONS.filter(c =>
-        c.name.includes(q) || c.engName.toLowerCase().includes(q) || c.role.includes(q) || c.lane.includes(q)
-    );
-
-    // 뉴스 필터링
-    const newsResults = NEWS.filter(n =>
-        n.title.toLowerCase().includes(q) || n.desc.toLowerCase().includes(q) || n.category.toLowerCase().includes(q)
-    );
-
-    // 카운트 표시
-    document.getElementById('champCount').textContent = `(${champResults.length})`;
-    document.getElementById('newsCount').textContent = `(${newsResults.length})`;
-
-    // 챔피언 결과 출력
-    const champList = document.getElementById('resultChampion');
-    if (champResults.length === 0) {
-        champList.innerHTML = `<div class="p-5 text-center text-muted">"${query}"에 해당하는 챔피언이 없습니다.</div>`;
-    } else {
-        champList.innerHTML = champResults.map(c => `
-            <div class="d-flex align-items-center bg-white border rounded mb-3 overflow-hidden">
-                <img src="${c.img}" alt="${c.name}" style="width:80px; height:80px; object-fit:cover;">
-                <div class="p-3 flex-grow-1">
-                    <div class="fw-bold">${c.name} <span class="text-muted small">(${c.engName})</span></div>
-                    <div class="small text-secondary mt-1">역할: ${c.role} | 라인: ${c.lane} | 난이도: ${c.difficulty}</div>
-                </div>
-            </div>`).join('');
-    }
-
-    // 뉴스 결과 출력
-    const newsList = document.getElementById('resultNews');
-    if (newsResults.length === 0) {
-        newsList.innerHTML = `<div class="p-5 text-center text-muted">"${query}"에 해당하는 뉴스가 없습니다.</div>`;
-    } else {
-        newsList.innerHTML = newsResults.map(n => `
-            <div class="bg-white border rounded p-3 mb-3">
-                <span class="badge bg-danger">${n.category}</span>
-                <div class="fw-bold mt-2">${n.title}</div>
-                <p class="small text-secondary mt-1 mb-0">${n.desc}</p>
-            </div>`).join('');
-    }
-
-    // 챔피언 탭 먼저 보임
-    switchCategory('champion', document.querySelector('.search-category-item'));
-
-    // 메인 화면 콘텐츠 숨기기
-    document.querySelector('.hero').classList.add('d-none');
-    document.getElementById('championCards').style.display = 'none';
-    document.getElementById('newsSection').style.display = 'none';
-    
-    // 검색 결과 섹션 표시
-    document.getElementById('searchResults').style.display = 'block';
-}
-
-// ── 폼 이벤트 연결 ────────────────────────────────────────────
-document.getElementById('searchForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const query = document.getElementById('searchInput').value;
-    performSearch(query);
-});
-=======
-//document.getElementById('searchForm').addEventListener('submit', function(e) {
-  //e.preventDefault(); // 폼 기본 동작 차단(새로고침)
-    //const query = document.getElementById('searchInput').value.trim();
-    //if (!query) return;
-    //window.open('https://www.google.com/search?q=' + encodeURIComponent(query), '_blank');
-//})
-
-// ── 챔피언 데이터 ──────────────────────────────────────────────// 
     const CHAMPIONS = [ 
-        { name: '아트록스', engName: 'Aatrox', role: '전사', lane: '탑', img: 'images/Aatrox.png', difficulty: '상' }, 
+        { name: '아트록스', engName: 'Aatrox', role: '전사', lane: '탑', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Aatrox.png', difficulty: '상' }, 
         { name: '사일러스', engName: 'Sylas', role: '마법사', lane: '정글/미드', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Sylas.png', difficulty: '중' },
         { name: '애니비아', engName: 'Anivia', role: '마법사', lane: '미드', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Anivia.png', difficulty: '상' }, 
         { name: '브라이어', engName: 'Briar', role: '전사', lane: '정글', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Briar.png', difficulty: '중' }, 
@@ -130,55 +10,64 @@ document.getElementById('searchForm').addEventListener('submit', function (e) {
         const NEWS = [ { title: '새로운 챔피언 출시', desc: '2026 루나 레벨 이벤트! 신규 챔피언과 함께하는 특별한 시즌.', category: '게임 업데이트' }, 
             { title: '패치 노트 16.4', desc: '챔피언 밸런스 및 아이템 업데이트 내용을 확인하세요.', category: '패치 노트' }, ];
         // ── 검색 실행 ──────────────────────────────────────────────── 
-        function performSearch(query) { const q = query.trim().toLowerCase(); // 앞 뒤 공백제거, 소문자 변환 if (!q) return;
-        document.getElementById('searchKeywordDisplay').textContent = `"${query}"`; 
-        // 검색어 인식
-        // 챔피온 데이터에서 이름, 영문명, 역할군, 라인 중 하나라도 검색어에 포함되면 
-        const champResults = CHAMPIONS.filter(c => c.name.includes(q) || c.engName.toLowerCase().includes(q) || c.role.includes(q) || c.lane.includes(q) );
-        // 뉴스 데이터에서 제목, 설명, 카테고리 중 하나라도 검색어에 포함되면 
-        const newsResults = NEWS.filter(n => n.title.toLowerCase().includes(q) || n.desc.toLowerCase().includes(q) || n.category.toLowerCase().includes(q) );
+        function performSearch(query) {
 
-        document.getElementById('champCount').textContent = `(${champResults.length})`; 
-        // 검색 결과 개수를 카운트 영역에 표시 
-        document.getElementById('newsCount').textContent = `(${newsResults.length})`;
-        const champList = document.getElementById('championResultList');
-        // 검색 결과 없는 경우, 있으면 카드형태 출력 
-            if (champResults.length === 0) { 
-                champList.innerHTML = `<div class="no-result"><h4>검색 결과 없음</h4><p>"${query}"에 해당하는 챔피언이 없습니다.</p></div>`; 
-                } 
-            else 
-                { 
-                    champList.innerHTML = champResults.map(c => ` 
-                        <div class="search-result-card d-flex align-items-center p-0 overflow-hidden"> 
-                        <img src="${c.img}" alt="${c.name}"> 
-                        <div class="p-3"> 
-                            <div style="font-weight:700; font-size:1rem; color:#111;">${c.name} <span style="color:#888; font-size:0.85rem;">(${c.engName})</span></div> 
-                            <div style="color:#555; font-size:0.9rem; margin-top:4px;">역할: ${c.role} &nbsp;|&nbsp; 라인: ${c.lane} &nbsp;|&nbsp; 난이도: ${c.difficulty}</div> 
-                            </div> 
-                        </div> `)
-                    .join(''); 
-                }
+            const lowerQuery = query.toLowerCase();
 
-                const newsList = document.getElementById('newsResultList'); // 검색 결과 없는 경우, 있으면 카드형태 출력 
-                if (newsResults.length === 0) { 
-                    newsList.innerHTML = `<div class="no-result"><h4>검색 결과 없음</h4><p>"${query}"에 해당하는 뉴스가 없습니다.</p></div>`; 
-                } else { 
-                    newsList.innerHTML = newsResults.map(n => ` 
-                        <div class="search-result-card p-3"> 
-                        <span style="font-size:0.75rem; background:#c8253a; color:#fff; padding:2px 8px; border-radius:3px;">${n.category}</span> 
-                        <div style="font-weight:700; font-size:1rem; color:#111; margin-top:8px;">${n.title}</div> 
-                        <div style="color:#555; font-size:0.9rem; margin-top:4px;">${n.desc}</div> 
-                        </div> 
-                    `).join(''); 
-                }
+            const champResults = CHAMPIONS.filter(c =>
+                c.name.toLowerCase().includes(lowerQuery)
+            );
 
-                switchCategory('champion', document.querySelector('.search-category-item')); // 챔피온 탭이 먼저 보임
-                
-                document.querySelector('.hero').classList.add('d-none'); // 히어로 섹션 숨김
-                document.querySelectorAll('section:not(#searchResults)').forEach(s => s.classList.add('d-none')); // 나머지 섹션 숨김 
-                document.getElementById('searchResults').classList.remove('d-none'); // 기타 섹션까지 숨김
-                document.getElementById('searchResults').style.display = 'block'; // 결과 섹션만 출력
-            }   
+            const newsResults = NEWS.filter(n =>
+                n.title.toLowerCase().includes(lowerQuery)
+            );
+
+            // ✅ 모달 제목 변경
+            document.getElementById("modalTitle").textContent =
+                `"${query}" 검색 결과`;
+
+            // ✅ 챔피언 결과 출력
+            document.getElementById("modalChampResults").innerHTML =
+                champResults.length > 0
+                ? `
+                    <h5 class="mb-3">챔피언 (${champResults.length})</h5>
+                    ${champResults.map(c => `
+                        <div class="card bg-secondary text-white mb-2">
+                            <div class="card-body d-flex align-items-center">
+                                <img src="${c.img}" width="50" class="me-3">
+                                <div>
+                                    <h6 class="mb-1">${c.name} (${c.engName})</h6>
+                                    <small>역할: ${c.role} / 라인: ${c.lane} / 난이도: ${c.difficulty}</small>
+                                </div>
+                            </div>
+                        </div>
+                    `).join("")}
+                `
+                : "<p class='text-muted'>챔피언 검색 결과 없음</p>";
+
+            // ✅ 뉴스 결과 출력
+            document.getElementById("modalNewsResults").innerHTML =
+                newsResults.length > 0
+                ? `
+                    <h5 class="mb-3">뉴스 (${newsResults.length})</h5>
+                ${newsResults.map(n => `
+                        <div class="card bg-secondary text-white mb-2">
+                           <div class="card-body">
+                                <h6>${n.title}</h6>
+                                <small class="text-warning">${n.category}</small>
+                                <p class="mb-0 mt-2">${n.desc}</p>
+                            </div>
+                        </div>
+                    `).join("")}
+                `
+                : "<p class='text-muted'>뉴스 검색 결과 없음</p>";
+
+            // ✅ Bootstrap 모달 열기
+            const modal = new bootstrap.Modal(
+                document.getElementById('searchResultModal')
+            );
+            modal.show();
+        }
             // ── 카테고리 전환 ────────────────────────────────────────────
             function switchCategory(type, el) {
                 document.querySelectorAll('.search-category-item').forEach(i => i.classList.remove('active'));
@@ -187,10 +76,28 @@ document.getElementById('searchForm').addEventListener('submit', function (e) {
                 document.getElementById('resultNews').style.display = type === 'news' ? 'block' : 'none';
             }
 
-            // ── 폼 이벤트 ────────────────────────────────────────────────
-            document.getElementById('searchForm').addEventListener('submit', function(e) {
+           document.getElementById("searchForm").addEventListener("submit", function(e) {
+
                 e.preventDefault();
-                const query = document.getElementById('searchInput').value;
-                performSearch(query);
-            });
->>>>>>> 45ea3e1496c5e79496ec136322fca0e1524360da
+
+                const query = document.getElementById("searchInput").value.trim();
+
+            if (!query) return;
+
+            performSearch(query);
+        });
+
+        function closeSearchPage() {
+
+            // ✅ 검색결과 화면 숨기기
+            document.getElementById("searchPage").style.display = "none";
+
+            // ✅ 메인 화면 다시 보이기
+            document.querySelector(".container").style.display = "block";
+
+            // ✅ 검색창 초기화 (선택사항)
+            document.getElementById("searchInput").value = "";
+        }
+
+
+

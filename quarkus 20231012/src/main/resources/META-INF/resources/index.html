@@ -64,7 +64,6 @@
       </div>
     </div>
   </nav>
-  <script src="js/search.js"></script>
 
     <!-- 메인 히어로 영역 -->
     <div class="container my-5 text-center">
@@ -364,7 +363,7 @@
 </div>
 
 <!-- ===== 검색 결과 섹션 (기본 숨김) ===== --> 
-<section id="searchResults"> 
+<section id="searchResults" style="display:none;"> 
     <!-- 키워드 헤더 --> 
     <div class="search-keyword-header"> 
         <h1 id="searchKeywordDisplay"></h1>
@@ -377,7 +376,15 @@
                 <!-- 왼쪽 카테고리 사이드바 -->
                 <div class="col-md-3 col-lg-2 search-sidebar bg-white py-4">
                     <div class="px-3 mb-3" style="font-size:0.8rem; color:#999; text-transform:uppercase; letter-spacing:0.1em;">카테고리</div>
-                        <div class="search-category-item active" onclick="switchCategory('champion', this)">
+                        <div id="categoryWrapper" style="display:none;">
+                            <div class="search-category active" onclick="switchCategory('champion', this)">
+                                <span class="count" id="champCount">(0)</span>
+                            </div>
+
+                            <div class="search-category" onclick="switchCategory('news', this)">
+                                <span class="count" id="newsCount">(0)</span>
+                            </div>
+                        </div>
                             챔피언 <span class="count" id="champCount">(0)</span>
                         </div>
                         <div class="search-category-item" onclick="switchCategory('news', this)">
@@ -403,9 +410,54 @@
             </div>
         </section>
     </head>
+    <!-- ✅ 검색결과 전용 화면 -->
+    <section id="searchPage" class="container mt-5" style="display:none;">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 id="searchPageTitle"></h2>
+            <button class="btn btn-outline-light" onclick="closeSearchPage()">닫기</button>
+        </div>
+
+        <div id="searchChampResults"></div>
+
+        <hr class="border-secondary my-4">
+
+        <div id="searchNewsResults"></div>
+
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/search.js"></script>
+
+    <!-- ✅ 검색 결과 모달 -->
+        <div class="modal fade" id="searchResultModal" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content bg-dark text-white">
+
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="modalTitle">검색 결과</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <!-- ✅ 챔피언 결과 -->
+                    <div id="modalChampResults"></div>
+
+                    <hr class="border-secondary my-4">
+
+                    <!-- ✅ 뉴스 결과 -->
+                    <div id="modalNewsResults"></div>
+
+                </div>
+
+                <div class="modal-footer border-secondary">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">
+                 닫기
+                </button>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
 <body>
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 45ea3e1496c5e79496ec136322fca0e1524360da
