@@ -1,0 +1,197 @@
+/* =========================
+   기본 (다크 테마)
+========================= */
+
+body 
+{ 
+    background-color: #0a0e17; 
+    color: #e0e0e0; 
+    font-family: 'Segoe UI', Arial, sans-serif; 
+}
+
+/* ✅ hero 배경 이미지는 항상 유지 */
+.hero 
+{
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+        url('../image/download.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero h1 
+{ 
+    font-size: 4rem; 
+    font-weight: bold; 
+    color: #c8aa6e;   /* LOL 골드 톤 */
+    text-shadow: 0 0 10px #a020f0;
+}
+
+/* 다운로드 버튼 */
+.btn-download 
+{
+    background-color: #a020f0;
+    border: none;
+    font-size: 1.3rem;
+    padding: 1rem 2rem;
+    margin: 1rem;
+    color: white;
+}
+
+.btn-download:hover 
+{ 
+    background-color: #800080; 
+}
+
+/* 네비 탭 */
+.nav-tabs .nav-link 
+{ 
+    color: #e0e0e0; 
+}
+
+.nav-tabs .nav-link.active 
+{ 
+    background-color: #1e1e1e; 
+    color: #c8aa6e; 
+    border-color: #a020f0; 
+}
+
+/* 테이블 */
+.table 
+{ 
+    --bs-table-bg: #1e1e1e; 
+    --bs-table-color: #e0e0e0; 
+    --bs-table-border-color: #444;
+}
+
+.table th 
+{ 
+    background-color: #000; 
+    color: #c8aa6e; 
+}
+
+/* 카드 */
+.card 
+{ 
+    background-color: #1e1e1e; 
+    border: 1px solid #444; 
+}
+
+.accent-purple 
+{ 
+    color: #a020f0; 
+}
+
+
+/* =========================
+   ✅ 라이트 테마
+========================= */
+
+body.light-theme
+{
+    background-color: #f5f5f5;
+    color: #222;
+}
+
+/* ✅ 이미지 유지 + 오버레이만 밝게 변경 */
+body.light-theme .hero
+{
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.55)),
+        url('../image/download.jpg');
+}
+
+/* 텍스트 가독성 조정 */
+body.light-theme .hero h1
+{
+    color: #7a4db3;
+    text-shadow: none;
+}
+
+/* 버튼 */
+body.light-theme .btn-download
+{
+    background-color: #7a4db3;
+    color: white;
+}
+
+body.light-theme .btn-download:hover
+{
+    background-color: #5e3791;
+}
+
+/* 네비 */
+body.light-theme .nav-tabs .nav-link
+{
+    color: #222;
+}
+
+body.light-theme .nav-tabs .nav-link.active
+{
+    background-color: #ffffff;
+    color: #7a4db3;
+    border-color: #a020f0;
+}
+
+/* 테이블 */
+body.light-theme .table
+{
+    --bs-table-bg: #ffffff;
+    --bs-table-color: #222;
+    --bs-table-border-color: #ccc;
+}
+
+body.light-theme .table th
+{
+    background-color: #eee;
+    color: #7a4db3;
+}
+
+/* 카드 */
+body.light-theme .card
+{
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+}
+
+/* 다크 테마 기본 */
+.hero 
+{
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+        url('../image/download.jpg') !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* 라이트 테마 */
+body.light-theme .hero
+{
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.55)),
+        url('../image/download.jpg') !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+body.light-theme .mac-text
+{
+    color: #000 !important;
+}
