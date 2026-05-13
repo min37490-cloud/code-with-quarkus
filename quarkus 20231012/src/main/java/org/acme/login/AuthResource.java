@@ -96,5 +96,16 @@ public class AuthResource {
                         .seeOther(URI.create("/"))
                         .build();
                     }
+                    // AuthResource.java 아래 새로 추가
+                    @GET
+                    @Path("/register")
+                    @Produces(MediaType.TEXT_HTML)
+                    public Response registerPage() {
+                        InputStream html = getClass()
+                        .getClassLoader()
+                        .getResourceAsStream(
+                    "META-INF/resources/login/register.html");
+                    return Response.ok(html).build();
+                    }
                 }
 
