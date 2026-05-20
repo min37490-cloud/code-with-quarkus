@@ -36,10 +36,10 @@ public class AuthResource {
         @FormParam("password") String password) {
         
             User user = User.findByUsername(username); // 아이디 조회
-            if (user == null || !user.password.equals(password)) { // 존재 확인
-                return Response
-                    .seeOther(URI.create("/login?error=1"))
-                    .build();
+        if (user == null || !user.password.equals(password)) { // 존재 확인
+            return Response
+                .seeOther(URI.create("/login?error=1"))
+                .build();
             }
 
             // 세션에 로그인 정보 저장
