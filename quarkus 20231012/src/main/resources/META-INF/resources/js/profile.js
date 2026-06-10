@@ -1,7 +1,17 @@
 window.onload = function () {
-    
-    
-    const params = new URLSearchParams(window.location.search);
+    fetch('/profile/info')                          // 서버에서 사용자 정보 요청, 비동기 i/o
+        .then(res => res.json())                    // json 파싱
+        .then(data => {
+            document.getElementById('infoUsername').textContent = data.username; // DOM 조작 방지
+            document.getElementById('infoEmail').textContent   = data.email;
+            document.getElementById('infoPhone').textContent   = data.phone;
+
+            if (data.profileImage) {                // null 체크
+                document.getElementById('profileImg').src =
+                    '/uploads/profile/' + data.profileImage;
+            }
+        });
+        const params = new URLSearchParams(window.location.search);
     const error = params.get('error');
     const success = params.get('success');
 
@@ -50,20 +60,7 @@ window.onload = function () {
         window.location.href = '/logout?next=login';
     }, 3500);
 }
-
-    
-    fetch('/profile/info')                          // 서버에서 사용자 정보 요청, 비동기 i/o
-        .then(res => res.json())                    // json 파싱
-        .then(data => {
-            document.getElementById('infoUsername').textContent = data.username; // DOM 조작 방지
-            document.getElementById('infoEmail').textContent   = data.email;
-            document.getElementById('infoPhone').textContent   = data.phone;
-
-            if (data.profileImage) {                // null 체크
-                document.getElementById('profileImg').src =
-                    '/uploads/profile/' + data.profileImage;
-            }
-        });
+};
 
 fetch('/profile/info')
 .then(res => res.json())
@@ -74,30 +71,6 @@ profileLink.setAttribute('data-bs-title', ' ' + data.username);
 new bootstrap.Tooltip(profileLink);
 }
 });
-
-fetch('/profile/info')
-    .then(res => res.json())
-    .then(data => {
-        // 기존 정보 테이블 표시 (유지)
-        document.getElementById('infoUsername').textContent = data.username;
-        document.getElementById('infoEmail').textContent = data.email;
-        document.getElementById('infoPhone').textContent = data.phone;
-        if (data.profileImage) {
-            document.getElementById('profileImg').src =
-                '/uploads/profile/' + data.profileImage;
-        }
-        // 수정 폼에 기존 값 자동 채우기
-        document.getElementById('updateEmail').value = data.email;
-        document.getElementById('updatePhone').value = data.phone;
-
-        // Tooltip 으로 사용자명 표시 (navUsername span 방식 → 교체)
-        const profileLink = document.getElementById('profileNavLink');
-        if (profileLink) {
-            profileLink.setAttribute('data-bs-title', ' ' + data.username);
-            new bootstrap.Tooltip(profileLink);
-        }
-    });
-}
 
 function validateAndUpdate() {
     let valid = true;
